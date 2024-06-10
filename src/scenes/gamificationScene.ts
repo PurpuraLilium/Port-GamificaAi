@@ -56,7 +56,7 @@ export class gamificationScene extends Scene{
 
                 this.fadeOUtElement(this.elementoTexto2!)
 
-                engine.goToScene("joguinho")
+                engine.goToScene("exposicao")
             }
         })
 }
