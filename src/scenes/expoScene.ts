@@ -1,4 +1,4 @@
-import { Color, Engine, FadeInOut, Resource, Scene, SceneActivationContext, Transition, vec } from "excalibur";
+import { Actor, CollisionType, Color, Engine, FadeInOut, Resource, Scene, SceneActivationContext, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 import { Player } from "../actors/player";
 
@@ -28,6 +28,23 @@ export class expoScene extends Scene{
         jogador.z = 1
 
         this.add(jogador)
+
+        let camadaObjetosColisores = tiledMap.getObjectLayers("objetosColisores")[0]
+
+        console.log(camadaObjetosColisores)
+
+        camadaObjetosColisores.objects.forEach(Objeto => {
+            const objetoAtual = new Actor({
+                name: Objeto.name,
+                x: Objeto.x + offsetX + (Objeto.tiledObject.width! / 2),
+                y: Objeto.y + offsetY + (Objeto.tiledObject.height! / 2),
+                width: Objeto.tiledObject.width,
+                height: Objeto.tiledObject.height,
+                collisionType: CollisionType.Fixed
+            })
+
+            this.add(objetoAtual)
+        })
     }
 }
 

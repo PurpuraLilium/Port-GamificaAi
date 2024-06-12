@@ -1,4 +1,4 @@
-import { Actor, Color, Engine, Keys, vec } from "excalibur";
+import { Actor, CollisionType, Color, Engine, Keys, vec } from "excalibur";
 
 export class Player extends Actor{
     private velocidade: number = 180
@@ -9,7 +9,8 @@ export class Player extends Actor{
             width: 32,
             height: 32,
             name: "Jogador",
-            color: Color.Red
+            color: Color.Red,
+            collisionType: CollisionType.Active
         
         })
     }
@@ -38,5 +39,27 @@ export class Player extends Actor{
                     break;
             }
         })
+        engine.input.keyboard.on("release", (event) => {
+            switch(event.key){
+                case Keys.Left:
+                case Keys.A:
+                    this.vel.x = 0
+                    break;
+                case Keys.Right:
+                case Keys.D:
+                    this.vel.x = 0
+                    break;
+                case Keys.Up:
+                case Keys.W:
+                    this.vel.y = 0
+                    break;
+                case Keys.Down:
+                case Keys.S:
+                    this.vel.y = 0
+                    break;
+                }
+        })
+
+
     }
 }
