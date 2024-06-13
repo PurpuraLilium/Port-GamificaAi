@@ -1,6 +1,7 @@
 import { Actor, CollisionType, Color, Engine, FadeInOut, Resource, Scene, SceneActivationContext, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 import { Player } from "../actors/player";
+import { npc } from "../actors/npc";
 
 export class expoScene extends Scene{
     onTransition(direction: "in" | "out"): Transition | undefined {
@@ -12,6 +13,9 @@ export class expoScene extends Scene{
 
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.Black
+
+        engine.toggleDebug()
+
         let tiledMap = Resources.Mapa
 
         let offsetX = 138
@@ -23,11 +27,27 @@ export class expoScene extends Scene{
 
         this.camera.zoom = 1.3
 
-        let jogador = new Player()
+        let spawnPoint = tiledMap.getObjectsByName("player_spawn")[0]
 
-        jogador.z = 1
+        let jogador = new Player(vec(spawnPoint.x + offsetX, spawnPoint.y + offsetY))
+
+        jogador.z = 2
 
         this.add(jogador)
+
+        let npcSpawnPointA = tiledMap.getObjectsByName("npc_a")[0]
+        let npcSpawnPointB = tiledMap.getObjectsByName("npc_b")[0]
+        let npcSpawnPointC = tiledMap.getObjectsByName("npc_c")[0]
+
+        let npcA = new npc(vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY), Color.Rose,"npcA")
+        let npcB = new npc(vec(npcSpawnPointB.x + offsetX, npcSpawnPointB.y + offsetY), Color.Violet,"npcB")
+        let npcC = new npc(vec(npcSpawnPointC.x + offsetX, npcSpawnPointC.y + offsetY), Color.Vermilion,"npcC")
+
+        this.add(npcA)
+        this.add(npcB)
+        this.add(npcC)
+
+        this.camera.strategy.lockToActor(jogador)
 
         let camadaObjetosColisores = tiledMap.getObjectLayers("objetosColisores")[0]
 
