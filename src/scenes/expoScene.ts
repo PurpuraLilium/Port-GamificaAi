@@ -39,7 +39,7 @@ export class expoScene extends Scene{
         let npcSpawnPointB = tiledMap.getObjectsByName("npc_b")[0]
         let npcSpawnPointC = tiledMap.getObjectsByName("npc_c")[0]
 
-        let npcA = new npc(vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY), Color.Rose,"npcA")
+        let npcA = new npc(vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY),Color.Rose,"npcA")
         let npcB = new npc(vec(npcSpawnPointB.x + offsetX, npcSpawnPointB.y + offsetY), Color.Violet,"npcB")
         let npcC = new npc(vec(npcSpawnPointC.x + offsetX, npcSpawnPointC.y + offsetY), Color.Vermilion,"npcC")
 
