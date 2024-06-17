@@ -2,7 +2,7 @@ import { Actor, Animation, CollisionType, Color, Engine, SpriteSheet, Vector } f
 import { Resources } from "../resources";
 
 export class npc extends Actor {
-    constructor(posicao: Vector, cor: Color , nome: string,){
+    constructor(posicao: Vector, cor: Color , nome: string){
         super({
             pos: posicao,
             width: 32,
@@ -10,6 +10,7 @@ export class npc extends Actor {
             name: nome,
             color: cor,
             collisionType: CollisionType.Active
+            
 
         })
     }
@@ -95,5 +96,7 @@ export class npc extends Actor {
         this.graphics.add("npcA-idle", npcAidle)
         this.graphics.add("npcB-idle", npcBidle)
         this.graphics.add("npcC-idle", npcCidle)
+
+        this.graphics.use("npcA-idle")
     }
 }

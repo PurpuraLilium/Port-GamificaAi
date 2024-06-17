@@ -243,6 +243,37 @@ export class Player extends Actor{
                 }
         })
 
+        engine.input.keyboard.on("press", (event) => {
+            if (event.key == Keys.F && this.temobjprox) {
+                
+                if(this.ultcolisor?.owner.name == "mesa_stand_a"){
+                    console.log("a")
+                    engine.goToScene("cases", {
+                        sceneActivationData: {
+                            nomeActor: this.ultcolisor.owner.name
+                        }
+                    })
+                }
+                if(this.ultcolisor?.owner.name == "mesa_stand_b"){
+                    console.log("b")
+                    engine.goToScene("cases", {
+                        sceneActivationData: {
+                            nomeActor: this.ultcolisor.owner.name
+                        }
+                    })
+                }
+                if(this.ultcolisor?.owner.name == "mesa_stand_c"){
+                    console.log("c")
+                    engine.goToScene("cases", {
+                        sceneActivationData: {
+                            nomeActor: this.ultcolisor.owner.name
+                        }
+                    })
+                }
+            }
+
+    
+        })
 
     }
 
@@ -258,7 +289,7 @@ export class Player extends Actor{
         if (this.ultcolisor && this.pos.distance(this.ultcolisor.worldPos) > 46){
             this.temobjprox = false
 
-            console.log("está longe")
+            
         }
     }
 
