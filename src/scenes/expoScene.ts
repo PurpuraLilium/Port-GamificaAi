@@ -14,7 +14,12 @@ export class expoScene extends Scene{
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.Black
 
-        engine.toggleDebug()
+        
+
+        let musicafundo = Resources.ritimadabgm
+
+        musicafundo.loop = true
+        musicafundo.play(0.5)
 
         let tiledMap = Resources.Mapa
 
@@ -39,9 +44,9 @@ export class expoScene extends Scene{
         let npcSpawnPointB = tiledMap.getObjectsByName("npc_b")[0]
         let npcSpawnPointC = tiledMap.getObjectsByName("npc_c")[0]
 
-        let npcA = new npc(vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY),Color.Rose,"npcA")
-        let npcB = new npc(vec(npcSpawnPointB.x + offsetX, npcSpawnPointB.y + offsetY), Color.Violet,"npcB")
-        let npcC = new npc(vec(npcSpawnPointC.x + offsetX, npcSpawnPointC.y + offsetY), Color.Vermilion,"npcC")
+        let npcA = new npc(vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY),Color.Rose,"npcA-idle")
+        let npcB = new npc(vec(npcSpawnPointB.x + offsetX, npcSpawnPointB.y + offsetY), Color.Violet,"npcB-idle")
+        let npcC = new npc(vec(npcSpawnPointC.x + offsetX, npcSpawnPointC.y + offsetY), Color.Vermilion,"npcC-idle")
 
         this.add(npcA)
         this.add(npcB)

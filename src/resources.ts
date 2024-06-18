@@ -1,10 +1,13 @@
 import { TiledResource } from "@excaliburjs/plugin-tiled";
-import { ImageFiltering, ImageSource, Loader } from "excalibur";
+import { ImageFiltering, ImageSource, Loader, Sound } from "excalibur";
 import logo from "./images/logo.png";
 import logoV from "./images/logo-vertical.png";
 import contole from "./images/controle.png";
 
 import pngTilesetPath from "./maps/Room_Builder_32x32.png?url"
+
+import ritimada from "./sound/ritmada_zelda.mp3"
+import classica from "./sound/zelda.mp3"
 
 import tsxParedesPath from "./maps/tileset_paredes?url"
 import tsxGenericPath from "./maps/tileset_generic?url"
@@ -27,6 +30,9 @@ export const Resources = {
   npcASprite: new ImageSource(npcASpritePath, {filtering: ImageFiltering.Pixel}),
   npcBSprite: new ImageSource(npcBSpritePath, {filtering: ImageFiltering.Pixel}),
   npcCSprite: new ImageSource(npcCSpritePath, {filtering: ImageFiltering.Pixel}),
+
+  ritimadabgm: new Sound(ritimada),
+  classica: new Sound(classica),
   
   Mapa: new TiledResource(tmxMapaPath, {
     pathMap: [

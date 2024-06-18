@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="29" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="28">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="29" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="43">
  <tileset firstgid="1" source="tileset_paredes.tsx"/>
  <tileset firstgid="8285" source="tileset_generic.tsx"/>
  <tileset firstgid="9533" source="tileset_biblioteca.tsx"/>
@@ -56,13 +56,15 @@
   <object id="24" name="player_spawn" x="463.167" y="520.75">
    <point/>
   </object>
-  <object id="25" name="npc_a" x="238.862" y="224.023">
+ </objectgroup>
+ <objectgroup id="12" name="npcs">
+  <object id="40" name="npc_a" x="239.867" y="197.357">
    <point/>
   </object>
-  <object id="26" name="npc_b" x="462.944" y="223.992">
+  <object id="41" name="npc_b" x="463.949" y="197.326">
    <point/>
   </object>
-  <object id="27" name="npc_c" x="686.995" y="223.999">
+  <object id="42" name="npc_c" x="688" y="197.333">
    <point/>
   </object>
  </objectgroup>

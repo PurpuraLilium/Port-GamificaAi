@@ -1,4 +1,4 @@
-import { Actor, Animation, CollisionType, Color, Engine, SpriteSheet, Vector } from "excalibur";
+import { Actor, Animation, CollisionType, Color, Engine, Graphic, Sprite, SpriteSheet, Vector } from "excalibur";
 import { Resources } from "../resources";
 
 export class npc extends Actor {
@@ -6,10 +6,10 @@ export class npc extends Actor {
         super({
             pos: posicao,
             width: 32,
-            height: 32,
+            height: 40,
             name: nome,
             color: cor,
-            collisionType: CollisionType.Active
+            collisionType: CollisionType.Fixed
             
 
         })
@@ -97,6 +97,8 @@ export class npc extends Actor {
         this.graphics.add("npcB-idle", npcBidle)
         this.graphics.add("npcC-idle", npcCidle)
 
-        this.graphics.use("npcA-idle")
+        let spritenpc = this.name
+
+        this.graphics.use(spritenpc)
     }
 }

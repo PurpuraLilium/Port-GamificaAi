@@ -1,13 +1,24 @@
-import { Color, Engine, FadeInOut, Keys, Scene, SceneActivationContext, SpriteSheet, Transition, vec } from "excalibur";
+import { Color, Engine, FadeInOut, Keys, KillEvent, Scene, SceneActivationContext, SpriteSheet, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 import { npc } from "../actors/npc";
 
 export class caseScene extends Scene{
     private objetointeract: any
 
-    private txtCena: string = ""
 
     elementoTexto?: HTMLElement
+    fadeOUtElement(elemento: HTMLElement){
+        let opacidade = parseFloat(elemento.style.opacity)
+
+        setInterval(()=> {
+            if (opacidade > 0){
+                opacidade -= 0.03
+    
+                elemento.style.opacity = opacidade.toString()
+            }
+        },20)
+
+    }
 
 
     onTransition(direction: "in" | "out"): Transition | undefined {
@@ -20,7 +31,14 @@ export class caseScene extends Scene{
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.Black
 
-            
+        this.input.keyboard.on("press", (event) => {
+            if (event.key == Keys.Esc) {
+
+                this.fadeOUtElement(this.elementoTexto!)
+
+                engine.goToScene("exposicao")
+            }
+        })
        
     }
 
@@ -41,10 +59,10 @@ export class caseScene extends Scene{
             this.elementoTexto.innerHTML = `<h2>Case A</h2>
             <p>Alguma coisa foi feita aqui</p>`
 
-            let npcA = new npc(vec(this.engine.drawWidth - 300, this.engine.halfDrawHeight),Color.Rose,"npcA")
-            npcA.scale = vec(10,10)
+            let npcs = new npc(vec(this.engine.drawWidth - 300, this.engine.halfDrawHeight),Color.Rose,"npcA-idle")
+            npcs.scale = vec(10,10)
             
-            this.add(npcA)
+            this.add(npcs)
     
     
         }
@@ -61,10 +79,10 @@ export class caseScene extends Scene{
             this.elementoTexto.innerHTML = `<h2>Case B</h2>
             <p>FIzaemos algo, esqueci o que...</p>`
 
-            let npcB = new npc(vec(this.engine.drawWidth - 300, this.engine.halfDrawHeight),Color.Rose,"npcA")
-            npcB.scale = vec(10,10)
+            let npcs = new npc(vec(this.engine.drawWidth - 300, this.engine. halfDrawHeight), Color.Blue,"npcB-idle")
+            npcs.scale = vec(10,10)
 
-            this.add(npcB)
+            this.add(npcs)
         }
 
         if (this.objetointeract.nomeActor == "mesa_stand_c"){
@@ -79,11 +97,15 @@ export class caseScene extends Scene{
             this.elementoTexto.innerHTML = `<h2>Case C</h2>
             <p>Nesse case trabalhamos fazendo alguma coisa</p>`
 
-            let npcC = new npc(vec(this.engine.drawWidth - 300, this.engine.halfDrawHeight),Color.Rose,"npcA")
-            npcC.scale = vec(10,10)
+            let npcs = new npc(vec(this.engine.drawWidth - 300, this.engine.halfDrawHeight),Color.Rose,"npcC-idle")
+            npcs.scale = vec(10,10)
 
-            this.add(npcC)
+            this.add(npcs)
           
         }
+    }
+
+    onDeactivate(context: SceneActivationContext<undefined>): void {
+        this.clear()
     }
 }
